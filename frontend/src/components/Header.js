@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
 import { Flex, Heading, Link, Box, Icon } from "@chakra-ui/react";
 import { HiShoppingBag, HiUser, HiOutlineMenuAlt3 } from "react-icons/hi";
 
@@ -45,7 +46,8 @@ const Header = () => {
           letterSpacing="md"
         >
           <Link
-            href="/"
+            as={RouterLink}
+            to="/"
             _hover={{ color: "whiteAlpha.700", textDecor: "none" }}
             textTransform="uppercase"
           >

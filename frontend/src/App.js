@@ -1,11 +1,12 @@
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Flex } from "@chakra-ui/react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomeScreen from "./screens/HomeScreen";
-
+import ProductScreen from "./screens/ProductScreen";
 const App = () => {
   return (
-    <div>
+    <Router>
       <Header />
       <Flex
         as="main"
@@ -15,10 +16,11 @@ const App = () => {
         px="6"
         bgColor="gray.200"
       >
-        <HomeScreen />
+        <Route path="/" exact component={HomeScreen} />
+        <Route path="/product/:id" component={ProductScreen} />
       </Flex>
       <Footer />
-    </div>
+    </Router>
   );
 };
 
