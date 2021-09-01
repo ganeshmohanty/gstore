@@ -8,7 +8,10 @@ const HomeScreen = () => {
       <Heading as="h2" mb="8" fontSize="3xl">
         Latest Products
       </Heading>
-      <Grid templateColumns="repeat(4,1fr)" gap="8">
+      <Grid
+        templateColumns={{ md: "1fr 1fr", sm: "1fr", lg: "repeat(4,1fr)" }}
+        gap="8"
+      >
         {products.map((product) => (
           <Product key={product._id} product={product} />
         ))}

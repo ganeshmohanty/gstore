@@ -33,7 +33,7 @@ const Product = ({ product }) => {
               text={`${product.numReviews} reviews`}
             />
             <Text fontSize="2xl" fontWeight="medium" color="blue.600">
-              {product.price}
+              ${product.price}
             </Text>
           </Flex>
         </Flex>
