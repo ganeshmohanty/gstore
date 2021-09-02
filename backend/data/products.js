@@ -1,6 +1,6 @@
 const products = [
   {
-    _id: 1,
+    _id: "1",
     name: "Women Floral Print Lounge T-Shirt",
     image: "/images/female_img_3.jpg",
     description:
@@ -13,7 +13,7 @@ const products = [
     numReviews: 4,
   },
   {
-    _id: 2,
+    _id: "2",
     name: "Pack of 2 Round Neck T-Shirts",
     image: "/images/male_img_4.jpg",
     description:
@@ -26,7 +26,7 @@ const products = [
     numReviews: 2,
   },
   {
-    _id: 3,
+    _id: "3",
     name: "Native Youth",
     image: "/images/male_img_2.jpg",
     description:
@@ -39,7 +39,7 @@ const products = [
     numReviews: 2,
   },
   {
-    _id: 4,
+    _id: "4",
     name: "Print Crop Lounge Top",
     image: "/images/female_img_1.jpg",
     description:
@@ -52,7 +52,7 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: 5,
+    _id: "5",
     name: "Crochet Detail Lightweight Top",
     image: "/images/female_img_2.jpg",
     description:
@@ -65,7 +65,7 @@ const products = [
     numReviews: 8,
   },
   {
-    _id: 6,
+    _id: "6",
     name: "Juventus Henley Neck Jersey",
     image: "/images/male_img_1.jpg",
     description:
@@ -78,7 +78,7 @@ const products = [
     numReviews: 3,
   },
   {
-    _id: 7,
+    _id: "7",
     name: "Mavericks Drake Tank Top",
     image: "/images/male_img_3.jpg",
     description:
@@ -91,7 +91,7 @@ const products = [
     numReviews: 3,
   },
   {
-    _id: 8,
+    _id: "8",
     name: "Printed Polo Collar T-shirt",
     image: "/images/female_img_4.jpg",
     description:

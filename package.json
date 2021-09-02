@@ -1,0 +1,32 @@
+{
+  "name": "rststore",
+  "version": "1.0.0",
+  "description": "Rst store webapp created using react",
+  "main": "server.js",
+  "type":"module",
+  "scripts": {
+    "start":"node backend/server",
+    "server":"nodemon backend/server",
+    "client":"npm start --prefix frontend",
+    "dev":"concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ganeshmohanty/RST-Store.git"
+  },
+  "author": "Ganeshmohanty",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ganeshmohanty/RST-Store/issues"
+  },
+  "homepage": "https://github.com/ganeshmohanty/RST-Store#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.4"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.1",
+    "nodemon": "^2.0.12"
+  }
+}
