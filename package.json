@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "description": "Rst store webapp created using react",
   "main": "server.js",
-  "type":"module",
+  "type": "module",
   "scripts": {
-    "start":"node backend/server",
-    "server":"nodemon backend/server",
-    "client":"npm start --prefix frontend",
-    "dev":"concurrently \"npm run server\" \"npm run client\""
+    "start": "node backend/server",
+    "server": "nodemon backend/server",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "data:import":"node backend/seeders",
+    "data:destroy":"node backend/seeders -d"
   },
   "repository": {
     "type": "git",
@@ -21,6 +23,8 @@
   },
   "homepage": "https://github.com/ganeshmohanty/RST-Store#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "mongoose": "^6.0.4"
