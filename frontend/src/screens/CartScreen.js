@@ -3,20 +3,20 @@ import { Link as RouterLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Flex,
-  Grid,
-  Link,
   Text,
+  Grid,
   Heading,
   Box,
+  Image,
+  Link,
   Select,
   Button,
   Icon,
-  Image,
 } from "@chakra-ui/react";
 import { IoTrashBinSharp } from "react-icons/io5";
 
 import Message from "../components/Message";
-import { addToCart, removeFromCart } from "../actions/cartAction";
+import { addToCart, removeFromCart } from "../actions/cartActions";
 
 const CartScreen = ({ match, location, history }) => {
   const productId = match.params.id;
@@ -48,7 +48,7 @@ const CartScreen = ({ match, location, history }) => {
         <Flex>
           {cartItems.length === 0 ? (
             <Message>
-              Your Cart is empty.{" "}
+              Your cart is empty.{" "}
               <Link as={RouterLink} to="/">
                 Go Back
               </Link>
@@ -108,6 +108,7 @@ const CartScreen = ({ match, location, history }) => {
                         </option>
                       ))}
                     </Select>
+
                     {/* DELETE BUTTON */}
                     <Button
                       type="button"
@@ -132,7 +133,7 @@ const CartScreen = ({ match, location, history }) => {
               >
                 <Flex direction="column">
                   <Heading as="h2" fontSize="3xl" mb="2">
-                    SubTotal (
+                    Subtotal (
                     {cartItems.reduce(
                       (acc, currItem) => acc + (currItem.qty || 1),
                       0
