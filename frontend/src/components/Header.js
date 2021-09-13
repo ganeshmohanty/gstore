@@ -67,7 +67,7 @@ const Header = () => {
         width={{ base: "full", md: "auto" }}
         alignItems="center"
       >
-        <MenuItems url="/">
+        <MenuItems url="/cart">
           <Flex alignItems="center">
             <Icon as={HiShoppingBag} w="4" h="4" mr="1" />
             cart
