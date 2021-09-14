@@ -9,12 +9,14 @@ dotenv.config();
 
 connectDB();
 const app = express();
+app.use(express.json()); //body parsing
 
 app.get("/", (req, res) => {
   res.send("Api is running");
 });
 
 app.use("/api/products", productRoutes);
+app.use("/api/users", userRoutes);
 
 //Error middlewares
 app.use(notFound);
