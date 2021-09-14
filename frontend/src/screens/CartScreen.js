@@ -82,7 +82,7 @@ const CartScreen = ({ match, location, history }) => {
 
                     {/* PRODUCT NAME */}
                     <Text fontWeight="semibold" fontSize="lg">
-                      <Link as={RouterLink} to={`/products/${item.product}`}>
+                      <Link as={RouterLink} to={`/product/${item.product}`}>
                         {item.name}
                       </Link>
                     </Text>

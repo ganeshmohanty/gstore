@@ -6,7 +6,8 @@ import { HiShoppingBag, HiUser, HiOutlineMenuAlt3 } from "react-icons/hi";
 const MenuItems = ({ children, url }) => {
   return (
     <Link
-      href={url}
+      as={RouterLink}
+      to={url}
       mt={{ base: 4, md: 0 }}
       fontSize="sm"
       letterSpacing="wide"
