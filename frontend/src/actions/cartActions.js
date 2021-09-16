@@ -1,6 +1,7 @@
 import axios from "axios";
 import { CART_ADD_ITEM, CART_REMOVE_ITEM } from "../constants/cartConstants";
 
+// function returning another function
 export const addToCart = (id, qty) => async (dispatch, getState) => {
   const { data } = await axios.get(`/api/products/${id}`);
 
@@ -21,9 +22,6 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
 
 export const removeFromCart = (id) => (dispatch, getState) => {
   dispatch({ type: CART_REMOVE_ITEM, payload: id });
-
-  localStorage.removeItem(
-    "cartItems",
-    JSON.stringify(getState().cart.cartItems)
-  );
+  //first dispatch will run then reducer will update the state then the setItem
+  localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
 };

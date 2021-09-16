@@ -1,7 +1,22 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
-import { Flex, Heading, Link, Box, Icon } from "@chakra-ui/react";
+import {
+  Flex,
+  Heading,
+  Link,
+  Box,
+  Icon,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  Button,
+} from "@chakra-ui/react";
 import { HiShoppingBag, HiUser, HiOutlineMenuAlt3 } from "react-icons/hi";
+import { IoChevronDown } from "react-icons/io5";
+
+import { logout } from "../actions/userActions";
 
 const MenuItems = ({ children, url }) => {
   return (
@@ -24,6 +39,15 @@ const MenuItems = ({ children, url }) => {
 
 const Header = () => {
   const [show, setShow] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const logoutHandler = () => {
+    dispatch(logout());
+  };
   return (
     <Flex
       as="header"
@@ -74,12 +98,31 @@ const Header = () => {
             cart
           </Flex>
         </MenuItems>
-        <MenuItems url="/">
-          <Flex alignItems="center">
-            <Icon as={HiUser} w="4" h="4" mr="1" />
-            login
-          </Flex>
-        </MenuItems>
+        {/* Logic for logout and login */}
+        {userInfo ? (
+          <Menu>
+            <MenuButton
+              as={Button}
+              rightIcon={<IoChevronDown />}
+              _hover={{ textDecoration: "none", opacity: "0.7" }}
+            >
+              {userInfo.name}
+            </MenuButton>
+            <MenuList>
+              <MenuItem as={RouterLink} to="/profile">
+                Profile
+              </MenuItem>
+              <MenuItem onClick={logoutHandler}>Logout</MenuItem>
+            </MenuList>
+          </Menu>
+        ) : (
+          <MenuItems url="/login">
+            <Flex alignItems="center">
+              <Icon as={HiUser} w="4" h="4" mr="1" />
+              login
+            </Flex>
+          </MenuItems>
+        )}
       </Box>
     </Flex>
   );
