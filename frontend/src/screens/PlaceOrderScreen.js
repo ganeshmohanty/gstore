@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { useEffect } from "react";
+import { Link as RouterLink } from "react-router-dom";
 import {
   Button,
   Flex,
@@ -9,12 +9,12 @@ import {
   Text,
   Image,
   Link,
-} from '@chakra-ui/react';
-import { useDispatch, useSelector } from 'react-redux';
+} from "@chakra-ui/react";
+import { useDispatch, useSelector } from "react-redux";
 
-import Message from '../components/Message';
-import CheckoutSteps from '../components/CheckoutSteps';
-import { createOrder } from '../actions/orderActions';
+import Message from "../components/Message";
+import CheckoutSteps from "../components/CheckoutSteps";
+import { createOrder } from "../actions/orderActions";
 
 const PlaceOrderScreen = ({ history }) => {
   const cart = useSelector((state) => state.cart);
@@ -35,7 +35,7 @@ const PlaceOrderScreen = ({ history }) => {
   const placeOrderHandler = () => {
     dispatch(
       createOrder({
-        orderItems: cart.orderItems,
+        orderItems: cart.cartItems,
         shippingAddress: cart.shippingAddress,
         paymentMethod: cart.paymentMethod,
         itemsPrice: cart.itemsPrice,
@@ -63,7 +63,7 @@ const PlaceOrderScreen = ({ history }) => {
             </Heading>
             <Text>
               <strong>Address: </strong>
-              {cart.shippingAddress.address}, {cart.shippingAddress.city},{' '}
+              {cart.shippingAddress.address}, {cart.shippingAddress.city},{" "}
               {cart.shippingAddress.postalCode}, {cart.shippingAddress.country}
             </Text>
           </Box>
