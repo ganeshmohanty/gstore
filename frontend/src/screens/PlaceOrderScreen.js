@@ -50,7 +50,7 @@ const PlaceOrderScreen = ({ history }) => {
     if (success) {
       history.push(`/order/${order._id}`);
     }
-  }, [history, success]);
+  }, [history, success, order._id]);
 
   return (
     <Flex w="full" py="5" direction="column">

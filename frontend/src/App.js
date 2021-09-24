@@ -13,6 +13,8 @@ import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import PaymentScreen from "./screens/PaymentScreen";
 import OrderScreen from "./screens/OrderScreen";
 import UsersListScreen from "./screens/UsersListScreen";
+import UserEditScreen from "./screens/UserEditScreen";
+import ProductListScreen from "./screens/ProductListScreen";
 const App = () => {
   return (
     <Router>
@@ -26,18 +28,18 @@ const App = () => {
         bgColor="gray.200"
       >
         <Route path="/order/:id" component={OrderScreen} />
-
         <Route path="/placeorder" component={PlaceOrderScreen} />
         <Route path="/payment" component={PaymentScreen} />
         <Route path="/shipping" component={ShippingScreen} />
         <Route path="/profile" component={ProfileScreen} />
         <Route path="/register" component={RegisterScreen} />
         <Route path="/login" component={LoginScreen} />
-        <Route path="/" exact component={HomeScreen} />
-        <Route path="/admin/userlist" component={UsersListScreen} />
-
         <Route path="/product/:id" component={ProductScreen} />
         <Route path="/cart/:id?" component={CartScreen} />
+        <Route path="/admin/user/:id/edit" component={UserEditScreen} />
+        <Route path="/admin/userlist" component={UsersListScreen} />
+        <Route path="/admin/productlist" component={ProductListScreen} />
+        <Route path="/" exact component={HomeScreen} />
       </Flex>
       <Footer />
     </Router>

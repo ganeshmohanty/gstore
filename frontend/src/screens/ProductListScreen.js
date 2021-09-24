@@ -14,35 +14,31 @@ import {
   Td,
   Box,
 } from "@chakra-ui/react";
-import {
-  IoCheckmarkCircleSharp,
-  IoCloseCircleSharp,
-  IoPencilSharp,
-  IoTrashBinSharp,
-} from "react-icons/io5";
+import { IoPencilSharp, IoTrashBinSharp, IoAdd } from "react-icons/io5";
 
 import Loader from "../components/Loader";
 import Message from "../components/Message";
-import { deleteUser, listUsers } from "../actions/userActions";
-import { USER_DETAILS_RESET } from "../constants/userConstants";
+import { listProducts, deleteProduct } from "../actions/productActions";
 
-const UsersListScreen = ({ history }) => {
+const ProductListScreen = ({ history }) => {
   const dispatch = useDispatch();
 
-  const userList = useSelector((state) => state.userList);
-  const { loading, error, users } = userList;
-  console.log(users);
+  const productList = useSelector((state) => state.productList);
+  const { loading, error, products } = productList;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  const userDelete = useSelector((state) => state.userDelete);
-  const { success: successDelete } = userDelete;
+  const productDelete = useSelector((state) => state.productDelete);
+  const {
+    loading: loadingDelete,
+    error: errorDelete,
+    success: successDelete,
+  } = productDelete;
 
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
-      dispatch(listUsers());
-      dispatch({ type: USER_DETAILS_RESET });
+      dispatch(listProducts());
     } else {
       history.push("/login");
     }
@@ -50,15 +46,27 @@ const UsersListScreen = ({ history }) => {
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you Sure?")) {
-      dispatch(deleteUser(id));
+      dispatch(deleteProduct(id));
     }
+  };
+
+  const createProductHandler = () => {
+    //create product
   };
 
   return (
     <>
-      <Heading as="h1" fontSize="3xl" mb="5">
-        Users
-      </Heading>
+      <Flex mb="5" alignItems="center" justifyContent="space-between">
+        <Heading as="h1" fontSize="3xl" mb="5">
+          Products
+        </Heading>
+        <Button onClick={createProductHandler} colorScheme="teal">
+          <Icon as={IoAdd} mr="2" fontSize="xl" fontWeight="bold" />
+          Create Product
+        </Button>
+      </Flex>
+      {loadingDelete && <Loader />}
+      {errorDelete && <Message type="error">{errorDelete}</Message>}
       {loading ? (
         <Loader />
       ) : error ? (
@@ -70,51 +78,33 @@ const UsersListScreen = ({ history }) => {
               <Tr>
                 <Th>ID</Th>
                 <Th>NAME</Th>
-                <Th>EMAIL</Th>
-                <Th>ADMIN</Th>
+                <Th>PRICE</Th>
+                <Th>CATEGORY</Th>
+                <Th>BRAND</Th>
                 <Th></Th>
               </Tr>
             </Thead>
             <Tbody>
-              {users.map((user) => (
-                <Tr key={user._id}>
-                  {console.log(user._id)}
-                  <Td>{user._id}</Td>
-                  <Td>{user.name}</Td>
-                  <Td>
-                    <a href={`mailto:${user.email}`}>{user.email}</a>
-                  </Td>
-                  <Td>
-                    {user.isAdmin ? (
-                      <Icon
-                        as={IoCheckmarkCircleSharp}
-                        color="green.600"
-                        w="8"
-                        h="8"
-                      />
-                    ) : (
-                      <Icon
-                        as={IoCloseCircleSharp}
-                        color="red.600"
-                        w="8"
-                        h="8"
-                      />
-                    )}
-                  </Td>
+              {products.map((product) => (
+                <Tr key={product._id}>
+                  <Td>{product._id}</Td>
+                  <Td>{product.name}</Td>
+                  <Td>${product.price}</Td>
+                  <Td>{product.category}</Td>
+                  <Td>{product.brand}</Td>
                   <Td>
                     <Flex justifyContent="flex-end" alignItems="center">
                       <Button
                         mr="4"
                         as={RouterLink}
-                        to={`/admin/user/${user._id}/edit`}
+                        to={`/admin/product/${product._id}/edit`}
                         colorScheme="teal"
                       >
                         <Icon as={IoPencilSharp} color="white" boxSize={6} />
                       </Button>
                       <Button
-                        to={`/user/${user._id}/delete`}
                         colorScheme="red"
-                        onClick={() => deleteHandler(user._id)}
+                        onClick={() => deleteHandler(product._id)}
                       >
                         <Icon as={IoTrashBinSharp} color="white" boxSize={6} />
                       </Button>
@@ -130,4 +120,4 @@ const UsersListScreen = ({ history }) => {
   );
 };
 
-export default UsersListScreen;
+export default ProductListScreen;
