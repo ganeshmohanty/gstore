@@ -76,7 +76,7 @@ const Header = () => {
             _hover={{ color: "whiteAlpha.700", textDecor: "none" }}
             textTransform="uppercase"
           >
-            RST Store
+            G-Store
           </Link>
         </Heading>
       </Flex>

@@ -3,9 +3,7 @@ let date = new Date();
 const Footer = () => {
   return (
     <Flex as="footer" justifyContent="center" py="5">
-      <Text>
-        Copyright {date.getFullYear()}.RST Store. All Rights Reserved.
-      </Text>
+      <Text>Copyright {date.getFullYear()}.G-Store. All Rights Reserved.</Text>
     </Flex>
   );
 };
